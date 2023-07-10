@@ -1,13 +1,25 @@
-import express, {Express, Request, Response} from 'express';
 require("dotenv").config()
+import express, {Express, Request, Response} from 'express';
+import { connectToDatabase } from './db/conn';
+const app: Express = express();
+const cors = require('cors')
+
 const { PORT } = process.env
 
-const app: Express = express();
+app.use(express.json())
+app.use(cors());
 
-app.get('/', (_req: Request, res: Response)=>{
-    res.send('Hello, this is Express + TypeScript');
-});
+const userRoutes = require('./routes/userRoutes')
 
-app.listen(PORT, ()=> {
-console.log(`[Server]: I am running at https://localhost:${PORT}`);
-});
+connectToDatabase()
+    .then(() => {
+        app.use("/users", userRoutes);
+
+        app.listen(PORT, () => {
+            console.log(`Server started at http://localhost:${PORT}`);
+        });
+    })
+    .catch((error: Error) => {
+        console.error("Database connection failed", error);
+        process.exit();
+    });
