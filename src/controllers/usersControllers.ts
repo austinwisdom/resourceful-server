@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { collections } from "../db/conn";
-import express, { Request, Response} from "express";
+import express, { Request, Response, NextFunction} from "express";
 import Users from "../models/users";
 const axios = require("axios");
 const mongo = require("mongodb");
@@ -85,7 +85,7 @@ const signIn = async (req: Request, res: Response) => {
 }
 
 
-const authUser = (req: Request, res: Response, next) => {
+const authUser = (req: Request, res: Response, next:NextFunction) => {
     const token = req.cookies.token;
     if (!token) {
       return res.status(403);
@@ -103,9 +103,12 @@ const getUser = (req: Request, res: Response) => {
         
 }
 
-const logOutUser = () => {
-    
+const logOutUser = (req:Request, res:Response) => {
+    return res
+        .clearCookie("token")
+        .status(200)
+        .json({message: "Successfully logged out"})
 }
 
 
- module.exports = { signUp, signIn, getUsers, authUser, getUser }
+ module.exports = { signUp, signIn, getUsers, authUser, getUser, logOutUser }

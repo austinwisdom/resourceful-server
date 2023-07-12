@@ -11,4 +11,7 @@ router.route("/login")
 .post(usersControllers.signIn)
 .get(usersControllers.authUser)
 
+router.route("/logout")
+.get(usersControllers.logOutUser)
+
 module.exports = router
