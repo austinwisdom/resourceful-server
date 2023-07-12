@@ -2,7 +2,7 @@ const router = require('express').Router()
 const usersControllers = require('../controllers/usersControllers')
 
 router.route("/")
-.get(usersControllers.getUser)
+.get(usersControllers.getUsers)
 
 router.route("/signup")
 .post(usersControllers.signUp)

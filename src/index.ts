@@ -12,10 +12,12 @@ app.use(cookieParser());
 app.use(cors());
 
 const userRoutes = require('./routes/userRoutes')
+const resourcesRoutes = require('./routes/resourcesRoutes')
 
 connectToDatabase()
     .then(() => {
         app.use("/users", userRoutes);
+        app.use("/resources", resourcesRoutes);
 
         app.listen(PORT, () => {
             console.log(`Server started at http://localhost:${PORT}`);

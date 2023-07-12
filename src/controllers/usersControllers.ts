@@ -84,7 +84,6 @@ const signIn = async (req: Request, res: Response) => {
     }}
 }
 
-
 const authUser = (req: Request, res: Response, next:NextFunction) => {
     const token = req.cookies.token;
     if (!token) {
@@ -99,10 +98,6 @@ const authUser = (req: Request, res: Response, next:NextFunction) => {
     }
 }
 
-const getUser = (req: Request, res: Response) => {
-        
-}
-
 const logOutUser = (req:Request, res:Response) => {
     return res
         .clearCookie("token")
@@ -110,5 +105,4 @@ const logOutUser = (req:Request, res:Response) => {
         .json({message: "Successfully logged out"})
 }
 
-
- module.exports = { signUp, signIn, getUsers, authUser, getUser, logOutUser }
+ module.exports = { signUp, signIn, getUsers, authUser, logOutUser }
