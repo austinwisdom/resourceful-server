@@ -75,7 +75,7 @@ const signIn = async (req: Request, res: Response) => {
         }
 
         const token = jwt.sign({ user: req.body.userName }, process.env.SECRET_KEY);
-        res.cookie('token', token, { httpOnly: true })
+        return res.cookie('token', token, { httpOnly: true, domain: 'localhost', path: '/' })
             .status(200)
             .json({ token }); 
 
@@ -91,11 +91,15 @@ const authUser = (req: Request, res: Response, next:NextFunction) => {
     }
     try {
         const data = jwt.verify(token, "SECRET_KEY");
-        req.body.userName = data.userName;
+        req.userName = data.user;
         return next();
     } catch {
         return res.status(403);
     }
+}
+
+const getUser = (req: Request, res: Response) => {
+    return res.json({userName: req.userName})
 }
 
 const logOutUser = (req:Request, res:Response) => {
@@ -105,4 +109,4 @@ const logOutUser = (req:Request, res:Response) => {
         .json({message: "Successfully logged out"})
 }
 
- module.exports = { signUp, signIn, getUsers, authUser, logOutUser }
+ module.exports = { signUp, signIn, getUsers, authUser, getUser, logOutUser }

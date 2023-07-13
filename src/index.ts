@@ -7,9 +7,15 @@ const cookieParser = require("cookie-parser");
 
 const { PORT } = process.env
 
+
+const corsOptions = {
+    origin: true,
+    credentials: true,
+};
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 
 const userRoutes = require('./routes/userRoutes')
 const resourcesRoutes = require('./routes/resourcesRoutes')
