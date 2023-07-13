@@ -87,19 +87,21 @@ const signIn = async (req: Request, res: Response) => {
 const authUser = (req: Request, res: Response, next:NextFunction) => {
     const token = req.cookies.token;
     if (!token) {
-      return res.status(403);
+      return res.status(403)
+      .json({message: "No token"});
     }
     try {
-        const data = jwt.verify(token, "SECRET_KEY");
-        req.userName = data.user;
+        const data = jwt.verify(token, process.env.SECRET_KEY);
+        req.user = data.user;
         return next();
     } catch {
-        return res.status(403);
+        return res.status(403)
+        .json({message: "Something went wrong"});
     }
 }
 
 const getUser = (req: Request, res: Response) => {
-    return res.json({userName: req.userName})
+    return res.json({userName: req.user})
 }
 
 const logOutUser = (req:Request, res:Response) => {
