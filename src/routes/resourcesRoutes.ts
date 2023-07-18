@@ -1,6 +1,6 @@
-const router = require('express').Router()
+const resourcesRouter = require('express').Router()
 const resourcesControllers = require('../controllers/resourcesControllers')
 
-router.route("/:category").get(resourcesControllers.getResources)
+resourcesRouter.route("/:category").get(resourcesControllers.getResources)
 
-module.exports = router
+module.exports = resourcesRouter

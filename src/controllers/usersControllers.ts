@@ -92,7 +92,7 @@ const authUser = (req: Request, res: Response, next:NextFunction) => {
     }
     try {
         const data = jwt.verify(token, process.env.SECRET_KEY);
-        req.user = data.user;
+        req.body.user = data.user;
         return next();
     } catch {
         return res.status(403)
@@ -101,7 +101,7 @@ const authUser = (req: Request, res: Response, next:NextFunction) => {
 }
 
 const getUser = (req: Request, res: Response) => {
-    return res.json({userName: req.user})
+    return res.json({userName: req.body.user})
 }
 
 const logOutUser = (req:Request, res:Response) => {
