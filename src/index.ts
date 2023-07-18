@@ -16,6 +16,8 @@ const corsOptions = {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
+app.use(express.static("./public"));
+
 
 const userRoutes = require('./routes/userRoutes')
 const resourcesRoutes = require('./routes/resourcesRoutes')
