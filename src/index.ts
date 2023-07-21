@@ -9,7 +9,7 @@ const { PORT } = process.env || 8080
 
 
 const corsOptions = {
-    origin: true,
+    origin: true || "https://backend.resourceful.tips",
     credentials: true,
 };
 
@@ -21,7 +21,7 @@ app.use(express.static("./public"));
 
 const userRoutes = require('./routes/userRoutes')
 const resourcesRoutes = require('./routes/resourcesRoutes')
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
     res.status(200).send("Welcome to the API!")
 })
 
