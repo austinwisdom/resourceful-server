@@ -75,7 +75,7 @@ const signIn = async (req: Request, res: Response) => {
         }
 
         const token = jwt.sign({ user: req.body.userName }, process.env.SECRET_KEY);
-        return res.cookie('token', token, { httpOnly: true, domain: 'localhost', path: '/' })
+        return res.cookie('token', token, { httpOnly: true, domain:"https://resourceful.tips", path: '/' })
             .status(200)
             .json({ token }); 
 
