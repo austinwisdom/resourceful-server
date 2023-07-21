@@ -5,7 +5,7 @@ const app: Express = express();
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
 
-const { PORT } = process.env
+const { PORT } = process.env || 8080
 
 
 const corsOptions = {
@@ -30,8 +30,8 @@ connectToDatabase()
         app.use("/users", userRoutes);
         app.use("/resources", resourcesRoutes);
 
-        app.listen(8080, () => {
-            console.log(`Server started at http://localhost:8080`);
+        app.listen(PORT, () => {
+            console.log(`Server started at http://localhost:${PORT}`);
         });
     })
     .catch((error: Error) => {
