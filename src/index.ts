@@ -21,12 +21,12 @@ app.use(express.static("./public"));
 
 const userRoutes = require('./routes/userRoutes')
 const resourcesRoutes = require('./routes/resourcesRoutes')
-app.get('/', (req, res) => {
-    res.status(200).send("Welcome to the API!")
-})
 
 connectToDatabase()
     .then(() => {
+        app.get('/', (req, res) => {
+            res.status(200).send("Welcome to the API!")
+        })
         app.use("/users", userRoutes);
         app.use("/resources", resourcesRoutes);
 
