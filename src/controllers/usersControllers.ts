@@ -106,7 +106,7 @@ const getUser = (req: Request, res: Response) => {
 
 const logOutUser = (req:Request, res:Response) => {
     return res
-        .clearCookie("token")
+        .clearCookie("token", { domain:"resourceful.tips", path: '/' })
         .status(200)
         .json({message: "Successfully logged out"})
 }
