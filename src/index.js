@@ -8,7 +8,7 @@ var cors = require('cors');
 var cookieParser = require("cookie-parser");
 var PORT = process.env.PORT || 8080;
 var corsOptions = {
-    origin: true || "https://backend.resourceful.tips" ,
+    origin:"https://backend.resourceful.tips" ,
     credentials: true,
 };
 app.use(express_1.default.json());

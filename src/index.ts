@@ -9,7 +9,7 @@ const { PORT } = process.env || 8080
 
 
 const corsOptions = {
-    origin: true || "https://backend.resourceful.tips",
+    origin:"https://backend.resourceful.tips",
     credentials: true,
 };
 
