@@ -6,7 +6,7 @@ var conn_1 = require("./db/conn");
 var app = (0, express_1.default)();
 var cors = require('cors');
 var cookieParser = require("cookie-parser");
-var PORT = process.env.PORT;
+var PORT = process.env.PORT || 8080;
 var corsOptions = {
     origin: true,
     credentials: true,
