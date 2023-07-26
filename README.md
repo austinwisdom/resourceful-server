@@ -1,5 +1,7 @@
 # RESOURCEFUL
 
+[![Deploy to AWS EC2](https://github.com/austinwisdom/resourceful-server/actions/workflows/deploy.yml/badge.svg)](https://github.com/austinwisdom/resourceful-server/actions/workflows/deploy.yml)
+
 Resourceful is a collaborative project between Kat Kowalik (KatKowalik), Jeff Ordze (JeffOrdze), and Austin Wisdom (austinwisdom) to provide study resources and references for a wide range of software engineering topics.
 
 The website is deployed on [resourceful.tips](resourceful.tips).
