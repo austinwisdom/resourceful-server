@@ -75,7 +75,7 @@ const signIn = async (req: Request, res: Response) => {
         }
 
         const token = jwt.sign({ user: req.body.userName }, process.env.SECRET_KEY);
-        return res.cookie('token', token, { httpOnly: true, domain:"resourceful.tips", path: '/' })
+        return res.cookie('token', token, { httpOnly: true, path: '/' })
             .status(200)
             .json({ token }); 
 
@@ -106,7 +106,7 @@ const getUser = (req: Request, res: Response) => {
 
 const logOutUser = (req:Request, res:Response) => {
     return res
-        .clearCookie("token", { domain:"resourceful.tips", path: '/' })
+        .clearCookie("token", { path: '/' })
         .status(200)
         .json({message: "Successfully logged out"})
 }

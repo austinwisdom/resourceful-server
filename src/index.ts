@@ -9,7 +9,7 @@ const { PORT } = process.env || 8080
 
 
 const corsOptions = {
-    origin:"https://resourceful.tips",
+    origin:["https://resourceful.tips", "http://localhost:5173"],
     credentials: true,
 };
 
