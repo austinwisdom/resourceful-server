@@ -2,7 +2,7 @@ name: Deploy to AWS EC2
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -19,3 +19,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: pm2 restart resourceful-server
+      - name: "Create env file"
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
